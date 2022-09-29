@@ -6,8 +6,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: const Drawer(backgroundColor: Colors.teal),
-        body: Column(
+        drawer:
+            const Drawer(backgroundColor: Color.fromARGB(255, 88, 214, 202)),
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.teal,
+        ),
+        body: ListView(
           children: [
             Container(
               height: 300,
@@ -41,7 +46,80 @@ class HomePage extends StatelessWidget {
                   ),
                 )
               ]),
-            )
+            ),
+            const ListTile(
+              subtitle: Text('Private'),
+              title: Text(
+                'Mombasa - Nakuru',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              trailing: Icon(Icons.more),
+            ),
+            const ListTile(
+              subtitle: Text('Private'),
+              title: Text(
+                'Kisumu - Nakuru',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              trailing: Icon(Icons.more),
+            ),
+            const ListTile(
+              subtitle: Text(
+                'public',
+                style: TextStyle(color: Colors.amber),
+              ),
+              title: Text(
+                'Mombasa - Nakuru',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              trailing: Icon(Icons.more),
+            ),
+            const ListTile(
+              subtitle: Text('Private'),
+              title: Text(
+                'Isiolo - Nyahururu',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              trailing: Icon(Icons.more),
+            ),
+            const ListTile(
+              subtitle: Text(
+                'public',
+                style: TextStyle(color: Colors.amber),
+              ),
+              title: Text(
+                'Likoni - Mombasa',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              trailing: Icon(Icons.more),
+            ),
+            const ListTile(
+              subtitle: Text('Private'),
+              title: Text(
+                'Mombasa - Eldoret',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              trailing: Icon(Icons.more),
+            ),
+            const ListTile(
+              subtitle: Text('Private'),
+              title: Text(
+                'Mombasa - Nanyuki',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              trailing: Icon(Icons.more),
+            ),
+            const ListTile(
+              subtitle: Text(
+                'public',
+                style: TextStyle(color: Colors.amber),
+              ),
+              title: Text(
+                'Nairobi - Nakuru',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              trailing: Icon(Icons.more),
+            ),
           ],
         ));
   }
