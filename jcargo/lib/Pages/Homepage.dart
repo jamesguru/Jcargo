@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:jcargo/Pages/Journey.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    String dropdownvalue = 'Journey';
+
+    // List of items in our dropdown menu
+    var items = [
+      'Journey',
+      'Movers',
+      'Parcels',
+    ];
     return Scaffold(
         drawer:
             const Drawer(backgroundColor: Color.fromARGB(255, 88, 214, 202)),
@@ -15,7 +24,7 @@ class HomePage extends StatelessWidget {
         body: ListView(
           children: [
             Container(
-              height: 300,
+              height: MediaQuery.of(context).size.width * 0.8,
               width: double.infinity,
               color: Colors.teal,
               child: Column(children: [
@@ -47,79 +56,28 @@ class HomePage extends StatelessWidget {
                 )
               ]),
             ),
-            const ListTile(
-              subtitle: Text('Private'),
-              title: Text(
-                'Mombasa - Nakuru',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: DropdownButton(
+                // Initial Value
+                value: dropdownvalue,
+
+                // Down Arrow Icon
+                icon: const Icon(Icons.keyboard_arrow_down),
+
+                // Array list of items
+                items: items.map((String items) {
+                  return DropdownMenuItem(
+                    value: items,
+                    child: Text(items),
+                  );
+                }).toList(),
+                // After selecting the desired option,it will
+                // change button value to selected value
+                onChanged: (String? newValue) {},
               ),
-              trailing: Icon(Icons.more),
             ),
-            const ListTile(
-              subtitle: Text('Private'),
-              title: Text(
-                'Kisumu - Nakuru',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-              ),
-              trailing: Icon(Icons.more),
-            ),
-            const ListTile(
-              subtitle: Text(
-                'public',
-                style: TextStyle(color: Colors.amber),
-              ),
-              title: Text(
-                'Mombasa - Nakuru',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-              ),
-              trailing: Icon(Icons.more),
-            ),
-            const ListTile(
-              subtitle: Text('Private'),
-              title: Text(
-                'Isiolo - Nyahururu',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-              ),
-              trailing: Icon(Icons.more),
-            ),
-            const ListTile(
-              subtitle: Text(
-                'public',
-                style: TextStyle(color: Colors.amber),
-              ),
-              title: Text(
-                'Likoni - Mombasa',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-              ),
-              trailing: Icon(Icons.more),
-            ),
-            const ListTile(
-              subtitle: Text('Private'),
-              title: Text(
-                'Mombasa - Eldoret',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-              ),
-              trailing: Icon(Icons.more),
-            ),
-            const ListTile(
-              subtitle: Text('Private'),
-              title: Text(
-                'Mombasa - Nanyuki',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-              ),
-              trailing: Icon(Icons.more),
-            ),
-            const ListTile(
-              subtitle: Text(
-                'public',
-                style: TextStyle(color: Colors.amber),
-              ),
-              title: Text(
-                'Nairobi - Nakuru',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-              ),
-              trailing: Icon(Icons.more),
-            ),
+            const Journey(),
           ],
         ));
   }
