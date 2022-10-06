@@ -1,9 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import 'package:jcargo/Widget/GoogleMap.dart';
 
 class JourneyDetail extends StatefulWidget {
   const JourneyDetail({super.key});
@@ -13,38 +12,137 @@ class JourneyDetail extends StatefulWidget {
 }
 
 class _JourneyDetailState extends State<JourneyDetail> {
-  Completer<GoogleMapController> _controller = Completer();
-
-  static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
-
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GoogleMap(
-        mapType: MapType.hybrid,
-        initialCameraPosition: _kGooglePlex,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        label: Text('To the lake!'),
-        icon: Icon(Icons.directions_boat),
-      ),
-    );
-  }
-
-  Future<void> _goToTheLake() async {
-    final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
+        body: ListView(
+      children: [
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.4,
+          child: const GoogleMapContainer(),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  SizedBox(
+                    width: 100,
+                    child: Text(
+                      'Driver',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      overflow: TextOverflow.clip,
+                    ),
+                  ),
+                  Text(
+                    'Rachael Kamau',
+                    style: TextStyle(fontSize: 18),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  SizedBox(
+                    width: 100,
+                    child: Text(
+                      'Journey',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      overflow: TextOverflow.clip,
+                    ),
+                  ),
+                  Text(
+                    'Mombasa - Nairobi',
+                    style: TextStyle(fontSize: 18),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  SizedBox(
+                    width: 100,
+                    child: Text(
+                      'Time',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      overflow: TextOverflow.clip,
+                    ),
+                  ),
+                  Text(
+                    '12:00 pm',
+                    style: TextStyle(fontSize: 18),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  SizedBox(
+                    width: 100,
+                    child: Text(
+                      'Car',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      overflow: TextOverflow.clip,
+                    ),
+                  ),
+                  Text(
+                    'Car is 8 sitter',
+                    style: TextStyle(fontSize: 18),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  SizedBox(
+                    width: 100,
+                    child: Text(
+                      'Driver Recommendation.',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      overflow: TextOverflow.clip,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 100,
+                    child: Text(
+                      'Driver needs people who are lovers of country music.',
+                      style: TextStyle(fontSize: 18),
+                      overflow: TextOverflow.clip,
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  Text(
+                    "Luggage:",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    width: 100,
+                    child: Text(
+                      'Small luggage the car is 10kg maxmum',
+                      style: TextStyle(fontSize: 18),
+                      overflow: TextOverflow.clip,
+                    ),
+                  )
+                ],
+              ),
+              const TextButton(onPressed: null, child: Text('Contact Driver'))
+            ],
+          ),
+        )
+      ],
+    ));
   }
 }
