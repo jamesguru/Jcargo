@@ -15,10 +15,13 @@ class GoogleMapContainer extends StatefulWidget {
 class _GoogleMapContainerState extends State<GoogleMapContainer> {
   final Completer<GoogleMapController> _controller = Completer();
 
-  static const LatLng sourceLocation = LatLng(36.8219, 1.2921);
-  static const LatLng destinationLocation = LatLng(37.1274, 0.4832);
+  static const LatLng sourceLocation = LatLng(0.4371, 36.9580);
+  static const LatLng destinationLocation = LatLng(1.2921, 36.8219);
 
-  List<LatLng> polylinesCoordinates = [];
+  List<LatLng> polylinesCoordinates = const [
+    LatLng(0.5371, 36.9580),
+    LatLng(1.2921, 36.8219)
+  ];
   LocationData? currentLocation;
 
   BitmapDescriptor sourceIcon = BitmapDescriptor.defaultMarker;
@@ -41,7 +44,7 @@ class _GoogleMapContainerState extends State<GoogleMapContainer> {
 
       googleMapController.animateCamera(CameraUpdate.newCameraPosition(
         CameraPosition(
-            zoom: 8,
+            zoom: 6,
             target: LatLng(newLocation.latitude!, newLocation.longitude!)),
       ));
 
@@ -81,7 +84,7 @@ class _GoogleMapContainerState extends State<GoogleMapContainer> {
         body: GoogleMap(
       initialCameraPosition: CameraPosition(
         target: LatLng(sourceLocation.latitude, sourceLocation.longitude),
-        zoom: 8,
+        zoom: 6,
       ),
       polylines: {
         Polyline(
