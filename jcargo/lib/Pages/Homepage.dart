@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:js_util';
+
 import 'package:flutter/material.dart';
 import 'package:jcargo/Pages/Journey.dart';
 
@@ -14,6 +17,7 @@ class HomePage extends StatelessWidget {
       'Movers',
       'Parcels',
     ];
+
     return Scaffold(
         drawer:
             const Drawer(backgroundColor: Color.fromARGB(255, 88, 214, 202)),
@@ -39,19 +43,28 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 50, right: 50, top: 50),
+                  padding: const EdgeInsets.only(left: 40, right: 40, top: 50),
                   child: TextFormField(
-                    style: const TextStyle(
-                      color: Colors.white,
+                    style: const TextStyle(fontSize: 18, color: Colors.black54),
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(
+                        Icons.search,
+                        color: Colors.amber,
+                        size: 30,
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      hintText: 'Search',
+                      contentPadding: const EdgeInsets.all(15),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
                     ),
-                    onChanged: (value) {},
-                    decoration: const InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white54)),
-                        labelText: 'search journey',
-                        labelStyle: TextStyle(color: Colors.white70),
-                        prefixIcon: Icon(Icons.search),
-                        hintStyle: TextStyle(color: Colors.white)),
                   ),
                 )
               ]),
