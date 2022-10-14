@@ -15,11 +15,7 @@ class SliderItem extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Image.network(
-          slideList[index].imageUrl,
-          height: 200,
-          width: 200,
-        ),
+        Image(image: AssetImage(slideList[index].imageUrl)),
         Text(
           slideList[index].title,
           textAlign: TextAlign.center,
