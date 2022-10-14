@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:jcargo/Model/slide.dart';
 import 'package:jcargo/Pages/Homepage.dart';
+import 'package:jcargo/Pages/Login.dart';
+import 'package:jcargo/Pages/Register.dart';
 import 'package:jcargo/Widget/SlideItem.dart';
 import 'package:jcargo/Widget/slide_dots.dart';
 
@@ -87,14 +89,15 @@ class _GetStartedState extends State<GetStarted> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const HomePage()),
+                      MaterialPageRoute(
+                          builder: (context) => const RegisterPage()),
                     );
                   },
                   style: TextButton.styleFrom(
                       primary: Colors.white,
                       elevation: 1,
-                      padding: const EdgeInsets.all(20),
-                      backgroundColor: Colors.teal),
+                      padding: const EdgeInsets.all(15),
+                      backgroundColor: Colors.amberAccent),
                   child: const Text(
                     "Get started",
                     style: TextStyle(fontSize: 18),
@@ -102,22 +105,31 @@ class _GetStartedState extends State<GetStarted> {
                 ),
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
                     'Have an account?',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: 15),
                   ),
-                  TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                        primary: Colors.white,
-                        padding: const EdgeInsets.all(10),
-                        elevation: 1,
-                        backgroundColor: Colors.teal),
-                    child: const Text(
-                      "Login",
-                      style: TextStyle(fontSize: 18),
+                  SizedBox(
+                    width: 150,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPage()),
+                        );
+                      },
+                      style: TextButton.styleFrom(
+                          primary: Colors.white,
+                          padding: const EdgeInsets.all(12),
+                          elevation: 1,
+                          backgroundColor: Colors.teal),
+                      child: const Text(
+                        "Login",
+                        style: TextStyle(fontSize: 18),
+                      ),
                     ),
                   ),
                 ],
